@@ -31,12 +31,13 @@ Hovering a project shows a vintage-photo preview next to the sign (screenshots i
 | I | **SUNGA** | Website for SUNGA, a digital & IT partner: custom web apps, mobile apps and business tools | [sunga.be](https://sunga.be/fr) |
 | II | **Kulabox** | Booking platform for African culinary experiences (search by craving, city and date; host pages) | [staging.kulabox.eu](https://staging.kulabox.eu/fr/experiences) |
 | III | **KRAFT** | Team project: creative workshops (linocut printing…) in coffee bars; concept, problem, audience and website | [kraft-neon.vercel.app](https://kraft-neon.vercel.app/) |
-| IV | **Wutai · FF VII** | The village of Wutai (Final Fantasy VII) rebuilt in **Blender**, then explorable in a **React Three Fiber** app: clickable buildings, camera moves with **GSAP**, **Rapier** physics, and Yuffie's hidden Materia as an easter egg | local demo |
+| IV | **Wutai · FF VII** | The village of Wutai (Final Fantasy VII) rebuilt in **Blender**, then explorable in a **React Three Fiber** app: clickable buildings, camera moves with **GSAP**, **Rapier** physics, and Yuffie's hidden Materia as an easter egg | **3D viewer inside the portfolio** |
 
 ### Wutai in detail
 - **Modelling**: village, pagoda, houses, river and statue modelled in Blender (`Wutai.blend`, `Wutai houses.blend`), exported to GLB (≈ 95 MB).
 - **Web app**: Vite + React + TypeScript, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`, `gsap`.
 - **Interactions**: raycasting on click shows an info card for each building and zooms the camera in; an easter egg in the garage drops Materia orbs with real physics; background music; a welcome screen featuring Yuffie.
+- **In this portfolio**: clicking the project opens a window with the model in real-time 3D (drag to rotate, scroll to zoom). For the web, the model was optimised with [glTF-Transform](https://gltf-transform.dev/): textures resized to 1024 px and converted to WebP, geometry Draco-compressed, going from **95 MB to 7.6 MB**.
 - **Approach**: made for the *Technology 3* course. The ideas (easter egg, UI design) are my own; AI was used as an assistant to explain concepts and unblock complex code, as noted in the code comments.
 
 ---
@@ -111,6 +112,7 @@ cv.pdf                      CV (Download CV button)
 README.md                   this file
 assets/photo.jpg            portrait for the About me page
 assets/projects/            project previews (screenshots)
+assets/wutai.glb            optimised Wutai model for the 3D viewer
 docs/
   references/               game screenshots used as reference
   elizabeth/                2D concept of the character
@@ -124,7 +126,7 @@ All the content lives in the `PROFILE` object at the top of the script in `index
 
 - `first`, `last`, `title`: name and title
 - `about`, `tagline`, `photo`: About me page
-- `projects`: name, tags, description, link and preview image for each project
+- `projects`: name, tags, description, link and preview image for each project (add `model: 'path.glb'` to open a 3D viewer instead of a link)
 - `skills`: skills and level (0 to 1)
 - `contact`: e-mail, LinkedIn, GitHub…
 - `cv`: path to the CV (put `cv.pdf` next to `index.html`)
