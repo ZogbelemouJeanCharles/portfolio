@@ -39,7 +39,7 @@ Hovering a project shows a vintage-photo preview next to the sign (screenshots i
 - **Modelling**: village, pagoda, houses, river and statue modelled in Blender (`Wutai.blend`, `Wutai houses.blend`), exported to GLB (≈ 95 MB).
 - **Web app**: Vite + React + TypeScript, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`, `gsap`.
 - **Interactions**: raycasting on click shows an info card for each building and zooms the camera in; an easter egg in the garage drops Materia orbs with real physics; background music; a welcome screen featuring Yuffie.
-- **Compare with the original**: the viewer has a *Compare with the original* button that shows a screenshot of Wutai from Final Fantasy VII (1997) next to my model. Drop the image at `assets/wutai-original.jpg` (the button only appears when the file exists).
+- **Compare with the original**: the viewer has a *Compare with the original* button that shows a screenshot of Wutai from Final Fantasy VII (1997) next to my model. The image lives at `assets/wutai-original.webp` (the button only appears when the file exists).
 - **In this portfolio**: clicking the project opens a window with the model in real-time 3D (drag to rotate, scroll to zoom). For the web, the model was optimised with [glTF-Transform](https://gltf-transform.dev/): textures resized to 1024 px and converted to WebP, geometry Draco-compressed, going from **95 MB to 7.6 MB**.
 - **Approach**: made for the *Technology 3* course. The ideas (easter egg, UI design) are my own; AI was used as an assistant to explain concepts and unblock complex code, as noted in the code comments.
 
