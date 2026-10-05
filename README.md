@@ -76,6 +76,11 @@ The game's official fonts are not publicly documented (the logo is custom letter
 
 The idea: use AI as a production tool, in service of an art direction defined up front.
 
+<p align="center">
+  <img src="docs/elizabeth/elizabeth-concept-gemini.jpg" alt="Chibi Elizabeth concept generated with Gemini: blue dress, grey corset, bolero, cameo choker, anchor in hand" width="640">
+  <br><em>2D concept of chibi Elizabeth, generated with Gemini. This image was then turned into the 3D model used on the site.</em>
+</p>
+
 1. **2D concept**: illustration generated with **Gemini** (Google) from my description of the character: chibi Elizabeth, blue dress, grey corset, bolero, cameo choker, anchor in hand.
    → [`docs/elizabeth/elizabeth-concept-gemini.jpg`](docs/elizabeth/elizabeth-concept-gemini.jpg)
 2. **Into 3D**: the image was turned into a textured (PBR) 3D model with **[Form From Light](https://formfromlight.com/)** and exported as GLB.
