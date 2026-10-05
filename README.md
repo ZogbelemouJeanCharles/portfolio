@@ -4,6 +4,8 @@ Portfolio interactif en 3D (site en anglais), en hommage au menu principal de **
 Le visiteur arrive directement devant une enseigne en bois suspendue dans une rue ensoleillée de Columbia : c'est le menu.
 Elizabeth, en version chibi, l'accompagne et réagit à ses actions.
 
+**Site en ligne : https://portfolio-tau-lyart-c9cwpvkk90.vercel.app/**
+
 > Projet personnel, non commercial. BioShock Infinite et ses personnages appartiennent à Irrational Games / 2K.
 
 ---
