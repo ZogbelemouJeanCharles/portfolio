@@ -18,7 +18,7 @@
   body.ready #loader{opacity:0;visibility:hidden}
 
   /* ---------- HUD ---------- */
-  #hud{position:fixed;left:0;right:0;bottom:3.2vh;z-index:11;display:flex;flex-direction:column;align-items:center;gap:6px;
+  #hud{position:fixed;left:0;right:0;bottom:calc(3.2vh + 12px);z-index:11;display:flex;flex-direction:column;align-items:center;gap:6px;
     opacity:0;transition:opacity .8s .8s;pointer-events:none}
   body.in-menu #hud{opacity:1}
   #hint{font-weight:300;font-size:1.05rem;letter-spacing:.04em;color:#fff;text-shadow:0 1px 4px #000,0 0 14px rgba(0,0,0,.7);min-height:1.5em}
@@ -59,6 +59,18 @@
   .vstage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
   .vstage canvas:active{cursor:grabbing}
   .vstatus{position:absolute;inset:0;display:grid;place-items:center;font:500 1rem Oswald,sans-serif;letter-spacing:.2em;color:#efe0bc;pointer-events:none}
+  .vhead .vbtns{display:flex;gap:8px}
+  .vhead button.alt{background:transparent;color:#4a1d0a;outline:2px solid #4a1d0a;outline-offset:-2px}
+  .vhead button.alt:hover,.vhead button.alt[aria-pressed="true"]{background:#4a1d0a;color:#efe0bc}
+  .vbody{position:relative;flex:1;min-height:0;display:flex;gap:10px}
+  .vbody .vstage{flex:1}
+  .vorig{display:none;flex:1;flex-direction:column;border:2px solid #4a1d0a;background:#20140a;min-width:0}
+  .vbody.compare .vorig{display:flex}
+  .vorig img{flex:1;min-height:0;width:100%;object-fit:contain;background:#000}
+  .vorig figcaption{padding:6px 10px;font:400 .8rem Oswald,sans-serif;letter-spacing:.06em;color:#efe0bc;background:#4a1d0a}
+  @media (max-width:820px){.vbody{flex-direction:column}}
+  #credits{position:fixed;left:0;right:0;bottom:4px;z-index:11;text-align:center;font:400 .66rem Oswald,sans-serif;letter-spacing:.06em;
+    color:rgba(255,255,255,.72);text-shadow:0 1px 2px #000;pointer-events:none;padding:0 12px}
   .vfoot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:0 10px;font:400 .85rem Oswald,sans-serif;letter-spacing:.06em;color:#7f4a22}
   @keyframes bump{40%{transform:scale(1.35)}}
   @media (max-width:700px){#keys{gap:14px;font-size:.75rem;padding:5px 40px}#keys .k-nav{display:none}}
@@ -80,10 +92,12 @@
 <button id="sound" aria-pressed="true">♪ SOUND</button>
 <div id="eagles" aria-live="polite"><i>★</i><b>0</b></div>
 <figure id="photo" aria-hidden="true"><img alt=""><b></b><span></span><em></em></figure>
+<div id="credits">BioShock Infinite © 2K Games / Irrational Games · Final Fantasy VII © Square Enix · Non-commercial fan tribute, not affiliated with these companies</div>
 <div id="viewer" role="dialog" aria-modal="true" aria-label="3D project viewer">
   <div class="vframe">
-    <div class="vhead"><h2></h2><button type="button" id="vclose">✕ CLOSE [ESC]</button></div>
-    <div class="vstage"><canvas></canvas><div class="vstatus"></div></div>
+    <div class="vhead"><h2></h2><div class="vbtns"><button type="button" class="alt" id="vcompare" aria-pressed="false" hidden>⇆ COMPARE WITH THE ORIGINAL</button><button type="button" id="vclose">✕ CLOSE [ESC]</button></div></div>
+    <div class="vbody"><div class="vstage"><canvas></canvas><div class="vstatus"></div></div>
+      <figure class="vorig"><img alt="Original scene from the game"><figcaption></figcaption></figure></div>
     <div class="vfoot"><span class="vdesc"></span><span>Drag to rotate · Scroll or pinch to zoom · Right-drag to pan</span></div>
   </div>
 </div>
@@ -128,6 +142,7 @@ const PROFILE = {
     {name:'KRAFT', tags:['TEAM PROJECT','WEB'], img:'assets/projects/kraft.jpg', url:'https://kraft-neon.vercel.app/',
      desc:"Creative workshops in coffee bars (linocut printing…). Team project: concept, problem, audience and website."},
     {name:'WUTAI · FF VII', tags:['BLENDER','R3F'], img:'assets/projects/wutai.jpg', url:'', model:'assets/wutai.glb',
+     original:{img:'assets/wutai-original.jpg', caption:'Wutai in Final Fantasy VII (1997) · © Square Enix'},
      desc:"Wutai village (Final Fantasy VII), rebuilt by me in Blender. Click to explore the 3D model right here."},
   ],
   skills: [
@@ -166,7 +181,7 @@ document.getElementById('a11y').innerHTML =
   `<h1>${fullName} — ${PROFILE.title}</h1><p>${PROFILE.about.join(' ')}</p>
    <h2>Projects</h2><ul>${PROFILE.projects.map(p=>`<li><a href="${p.url}">${p.name}</a> — ${p.desc}</li>`).join('')}</ul>
    <h2>Skills</h2><ul>${PROFILE.skills.map(s=>`<li>${s.name}</li>`).join('')}</ul>
-   <h2>Contact</h2><ul>${PROFILE.contact.map(c=>`<li><a href="${c.url}">${c.label}: ${c.value}</a></li>`).join('')}</ul>
+   <p>BioShock Infinite © 2K Games / Irrational Games. Final Fantasy VII © Square Enix. Non-commercial fan tribute.</p><h2>Contact</h2><ul>${PROFILE.contact.map(c=>`<li><a href="${c.url}">${c.label}: ${c.value}</a></li>`).join('')}</ul>
    <p><a href="${PROFILE.cv}">Download CV</a></p>`;
 
 /* ---------- utilitaires ---------- */
@@ -760,11 +775,21 @@ function frameModel(m){
   viewer.scene.fog.near=R*2;viewer.scene.fog.far=R*8;
   viewer.sun.position.set(R*.6,R,R*.4);
 }
+const vCompare=document.getElementById('vcompare'),vBody=viewer.el.querySelector('.vbody'),vOrig=viewer.el.querySelector('.vorig');
+function setCompare(on){vBody.classList.toggle('compare',on);vCompare.setAttribute('aria-pressed',on);requestAnimationFrame(sizeViewer)}
+vCompare.onclick=e=>{e.stopPropagation();setCompare(vCompare.getAttribute('aria-pressed')!=='true');tone(780,.08,.03)};
+function setupCompare(pr){
+  setCompare(false);vCompare.hidden=true;
+  if(!pr.original)return;
+  const img=vOrig.querySelector('img');
+  img.onload=()=>{vCompare.hidden=false};img.onerror=()=>{vCompare.hidden=true}; // le bouton n'apparaît que si l'image existe
+  img.src=pr.original.img;vOrig.querySelector('figcaption').textContent=pr.original.caption;
+}
 function openViewer(pr){
   if(!viewer.r)initViewer();
   viewer.open=true;viewer.el.classList.add('on');
   viewer.el.querySelector('h2').textContent=pr.name;viewer.el.querySelector('.vdesc').textContent=pr.desc.replace(/ Click.*$/,'');
-  sizeViewer();tone(660,.2,.05);
+  setupCompare(pr);sizeViewer();tone(660,.2,.05);
   if(viewer.current)viewer.scene.remove(viewer.current);viewer.current=null;
   const done=m=>{viewer.current=m;viewer.scene.add(m);frameModel(m);viewer.status.textContent=''};
   if(viewer.models[pr.model])done(viewer.models[pr.model]);
