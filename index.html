@@ -333,22 +333,6 @@ for(const [z,y,s] of [[-6.6,7.4,1],[5.2,6.4,1.25]]){const geo=new THREE.PlaneGeo
   const p=geo.attributes.position;for(let i=0;i<p.count;i++)p.setZ(i,Math.sin(p.getX(i)*2.4)*.06);geo.computeVertexNormals();
   const b=new THREE.Mesh(geo,raffleMat);b.position.set(WALL_R-.08,y,z);b.rotation.y=-Math.PI/2;b.castShadow=true;scene.add(b)}
 
-// enseigne "Curt's Groceries & Meat" (côté droit, premier plan)
-{
-  const c=mk(1024,640),x=c.getContext('2d');
-  const shapeP=new Path2D('M60 210 Q 120 90 300 110 L 760 80 Q 980 70 990 230 L 1000 470 Q 990 560 820 560 L 140 560 Q 40 560 40 470 Z');
-  x.fillStyle='#d6a54b';x.fill(shapeP);x.save();x.clip(shapeP);
-  x.fillStyle='#24365a';x.fillRect(0,0,1024,640);x.fillStyle='#8a2a22';x.fillRect(0,440,1024,200);x.restore();
-  x.lineWidth=18;x.strokeStyle='#d6a54b';x.stroke(shapeP);x.lineWidth=4;x.strokeStyle='#7a5418';x.stroke(shapeP);
-  x.textAlign='center';x.textBaseline='middle';
-  x.font='italic 700 70px "Old Standard TT"';x.fillStyle='#e8c47a';x.fillText("Curt's",360,175);
-  x.save();x.font='130px "Alfa Slab One"';x.translate(520,300);x.scale(.78,1);x.fillStyle='#3a1a08';x.fillText('GROCERIES & MEAT',5,6);x.fillStyle='#f0cc7c';x.fillText('GROCERIES & MEAT',0,0);x.restore();
-  x.save();x.font='600 64px Oswald';if('letterSpacing' in x)x.letterSpacing='14px';x.fillStyle='#f0cc7c';x.fillText('FARM FRESH',520,410);x.restore();
-  x.font='italic 700 42px "Old Standard TT"';x.fillStyle='#f0cc7c';x.fillText('“ Comstock Approved ”',520,500);
-  const t=tex(c);const m=new THREE.Mesh(new THREE.PlaneGeometry(2.6,1.62),new THREE.MeshStandardMaterial({map:t,transparent:true,alphaTest:.5,side:THREE.DoubleSide,roughness:.5,metalness:.2}));
-  m.position.set(WALL_R-1.45,2.9,2.4);m.rotation.y=-.12;m.castShadow=true;scene.add(m);
-  const rod=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,2.8,8),ironMat);rod.rotation.z=Math.PI/2;rod.position.set(WALL_R-1.4,3.8,2.4);scene.add(rod);
-}
 
 // lierre sur le mur de gauche, autour de l'enseigne
 const leafTex=(()=>{const c=mk(128,128),x=c.getContext('2d');x.translate(64,70);

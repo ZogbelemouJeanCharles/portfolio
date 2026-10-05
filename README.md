@@ -1,152 +1,154 @@
 # Portfolio — Columbia
 
-Portfolio interactif en 3D (site en anglais), en hommage au menu principal de **BioShock Infinite** (Irrational Games, 2013).
-Le visiteur arrive directement devant une enseigne en bois suspendue dans une rue ensoleillée de Columbia : c'est le menu.
-Elizabeth, en version chibi, l'accompagne et réagit à ses actions.
+An interactive 3D portfolio, built as a tribute to the main menu of **BioShock Infinite** (Irrational Games, 2013).
+Visitors land straight in front of a wooden sign hanging in a sunlit street of Columbia: that sign is the menu.
+A chibi version of Elizabeth keeps them company and reacts to what they do.
 
-**Site en ligne : https://portfolio-tau-lyart-c9cwpvkk90.vercel.app/**
+**Live site: https://portfolio-tau-lyart-c9cwpvkk90.vercel.app/**
 
-> Projet personnel, non commercial. BioShock Infinite et ses personnages appartiennent à Irrational Games / 2K.
+> Personal, non-commercial project. BioShock Infinite and its characters belong to Irrational Games / 2K.
 
 ---
 
-## Aperçu
+## Overview
 
-| Écran | Ce qu'on y trouve |
+| Screen | What you'll find |
 |---|---|
-| **Menu** | Enseigne en papier vieilli, entièrement en anglais : *About me*, *My projects*, *Skills*, *Download CV*, *Contact* |
-| **Pages** | L'enseigne pivote et affiche le contenu au dos, dans le style des écrans d'options du jeu (curseurs pour les compétences, etc.) |
-| **Elizabeth** | Suit le curseur, sautille au survol, fait une pirouette à l'ouverture d'une page ; au clic, elle lance une Silver Eagle (« Booker, catch! ») qui s'ajoute au compteur en haut à gauche, comme dans le jeu |
+| **Menu** | An aged paper sign: *About me*, *My projects*, *Skills*, *Download CV*, *Contact* |
+| **Pages** | The sign flips around and shows the content on its back, styled like the game's options screens (sliders for skills, etc.) |
+| **Elizabeth** | Follows the cursor, hops when you hover an item and spins when a page opens. Click her and she tosses you a Silver Eagle ("Booker, catch!") that adds up in a counter at the top left, just like in the game |
 
-Navigation : souris ou clavier (`↑` `↓`, `Entrée`, `Échap`). Le son démarre au premier clic ou à la première touche (règle des navigateurs).
+Navigation: mouse or keyboard (`↑` `↓`, `Enter`, `Esc`). Sound starts on the first click or key press (a browser rule).
 
 ---
 
-## Projets présentés (« My projects »)
+## Featured projects ("My projects")
 
-Au survol d'un projet, un aperçu façon photo d'époque apparaît à côté de l'enseigne (captures dans [`assets/projects/`](assets/projects/)).
+Hovering a project shows a vintage-photo preview next to the sign (screenshots in [`assets/projects/`](assets/projects/)).
 
-| # | Projet | Description | Lien |
+| # | Project | Description | Link |
 |---|---|---|---|
-| I | **SUNGA** | Site de SUNGA, partenaire numérique et IT : applications web, mobiles et outils métier sur mesure | [sunga.be](https://sunga.be/fr) |
-| II | **Kulabox** | Plateforme de réservation d'expériences culinaires africaines (recherche par envie, ville, date ; pages hôtes) | [staging.kulabox.eu](https://staging.kulabox.eu/fr/experiences) |
-| III | **KRAFT** | Projet d'équipe : ateliers créatifs (linogravure…) dans des bars à café ; concept, problème, cible et site | [kraft-neon.vercel.app](https://kraft-neon.vercel.app/) |
-| IV | **Wutai · FF VII** | Le village de Wutai (Final Fantasy VII) recréé dans **Blender**, puis exploré dans une app **React Three Fiber** : bâtiments cliquables, caméra animée avec **GSAP**, physique **Rapier**, easter egg des Materia cachées de Yuffie | démo en local |
+| I | **SUNGA** | Website for SUNGA, a digital & IT partner: custom web apps, mobile apps and business tools | [sunga.be](https://sunga.be/fr) |
+| II | **Kulabox** | Booking platform for African culinary experiences (search by craving, city and date; host pages) | [staging.kulabox.eu](https://staging.kulabox.eu/fr/experiences) |
+| III | **KRAFT** | Team project: creative workshops (linocut printing…) in coffee bars; concept, problem, audience and website | [kraft-neon.vercel.app](https://kraft-neon.vercel.app/) |
+| IV | **Wutai · FF VII** | The village of Wutai (Final Fantasy VII) rebuilt in **Blender**, then explorable in a **React Three Fiber** app: clickable buildings, camera moves with **GSAP**, **Rapier** physics, and Yuffie's hidden Materia as an easter egg | local demo |
 
-### Wutai, en détail
-- **Modélisation** : village, pagode, maisons, rivière et statue modélisés dans Blender (fichiers `Wutai.blend`, `Wutai houses.blend`), exportés en GLB (≈ 95 Mo).
-- **App web** : Vite + React + TypeScript, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`, `gsap`.
-- **Interactions** : raycasting au clic sur les bâtiments, avec une fiche et un zoom de caméra ; easter egg dans le garage, qui fait tomber des Materia avec une vraie physique ; musique d'ambiance ; écran d'accueil avec Yuffie.
-- **Démarche** : réalisée pour le cours *Technology 3*. Les idées (easter egg, design de l'UI) sont les miennes, et l'IA a servi d'assistant pour expliquer des concepts et débloquer du code complexe, comme indiqué dans les commentaires du code.
+### Wutai in detail
+- **Modelling**: village, pagoda, houses, river and statue modelled in Blender (`Wutai.blend`, `Wutai houses.blend`), exported to GLB (≈ 95 MB).
+- **Web app**: Vite + React + TypeScript, `@react-three/fiber`, `@react-three/drei`, `@react-three/rapier`, `gsap`.
+- **Interactions**: raycasting on click shows an info card for each building and zooms the camera in; an easter egg in the garage drops Materia orbs with real physics; background music; a welcome screen featuring Yuffie.
+- **Approach**: made for the *Technology 3* course. The ideas (easter egg, UI design) are my own; AI was used as an assistant to explain concepts and unblock complex code, as noted in the code comments.
 
 ---
 
-## Références et intentions
+## References and intentions
 
-### Le menu de BioShock Infinite
-- Vidéo de référence : [BioShock Infinite – Menu Screens (PC)](https://www.youtube.com/watch?v=BAJw2XH-E5o)
-- Captures de référence : [`docs/references/`](docs/references/)
-  - `bioshock-menu-principal.webp` : menu principal (enseigne, lierre, fanions, soleil au bout de la rue)
+### The BioShock Infinite menu
+- Reference video: [BioShock Infinite – Menu Screens (PC)](https://www.youtube.com/watch?v=BAJw2XH-E5o)
+- Reference screenshots: [`docs/references/`](docs/references/)
+  - `bioshock-menu-principal.webp`: main menu (sign, ivy, bunting, sun at the end of the street)
 
-Éléments repris :
-- **Composition** : enseigne à gauche, rue qui file vers le soleil à droite.
-- **UI** : papier vieilli, double filet, coins ornés d'étoiles, sélection en forme de parchemin enroulé, indications `[Esc] BACK` sur bandeau sombre.
-- **Lumière** : contre-jour doré, rayons de soleil, halo (bloom), brume chaude, vignettage et grain.
-- **Décor** : lierre, fanions délavés, drapeaux étoilés, bannière « Columbia Raffle and Fair 1912 », enseigne « Groceries & Meat ».
+What was carried over:
+- **Composition**: the sign on the left, the street running towards the sun on the right.
+- **UI**: aged paper, double rules, star-ornamented corners, a rolled-scroll selection highlight, `[Esc] BACK` prompts on a dark band.
+- **Lighting**: golden backlight, sun rays, bloom, warm haze, vignette and film grain.
+- **Set dressing**: ivy, faded bunting, star-spangled flags, a "Columbia Raffle and Fair 1912" banner.
 
-### Le personnage qui réagit
-- Inspiration : un [post LinkedIn](https://lnkd.in/p/egtRvVPE) présentant un portfolio inspiré de la Wii, avec un petit personnage qui suit le curseur et s'anime au survol des options.
-- Ici, ce rôle est tenu par Elizabeth.
+### The reactive character
+- Inspiration: a [LinkedIn post](https://lnkd.in/p/egtRvVPE) showing a Wii-inspired portfolio with a little character that follows the cursor and gets excited when you hover the options.
+- Here, Elizabeth plays that role.
 
-### Typographies
-Les polices officielles du jeu ne sont pas documentées publiquement (le logo est un lettrage sur mesure). Équivalents libres choisis à l'œil, via Google Fonts :
+### Typography
+The game's official fonts are not publicly documented (the logo is custom lettering). Free look-alikes were picked by eye from Google Fonts:
 
-| Usage | Police |
+| Use | Font |
 |---|---|
-| Menu, indications, textes | **Oswald** (linéale condensée, proche « Alternate Gothic ») |
-| Bannière, détails | **Old Standard TT** |
+| Menu, prompts, body text | **Oswald** (condensed sans, close to "Alternate Gothic") |
+| Banner, details | **Old Standard TT** |
 
 ---
 
-## Elizabeth chibi : processus de création
+## Chibi Elizabeth: creative process
 
-Démarche : utiliser l'IA comme un outil de production, au service d'une direction artistique définie au départ.
+The idea: use AI as a production tool, in service of an art direction defined up front.
 
-1. **Concept 2D** : illustration générée avec **Gemini** (Google), à partir de ma description du personnage : Elizabeth en chibi, robe bleue, corset gris, boléro, collier camée, ancre à la main.
+1. **2D concept**: illustration generated with **Gemini** (Google) from my description of the character: chibi Elizabeth, blue dress, grey corset, bolero, cameo choker, anchor in hand.
    → [`docs/elizabeth/elizabeth-concept-gemini.jpg`](docs/elizabeth/elizabeth-concept-gemini.jpg)
-2. **Passage en 3D** : l'image a été convertie en modèle 3D texturé (PBR) avec **[Form From Light](https://formfromlight.com/)**, puis exportée au format GLB.
-   → [`elizabeth.glb`](elizabeth.glb) (≈ 6,8 Mo, maillage unique, sans squelette)
-3. **Intégration** : modèle chargé dans Three.js, mis à l'échelle et posé au sol automatiquement, orientation corrigée.
-4. **Animation procédurale** : comme le modèle n'a pas de squelette, il est animé en code :
-   - rotation vers le curseur ;
-   - sauts avec écrasement / étirement à l'atterrissage ;
-   - pirouette à l'ouverture d'une page ;
-   - légère « respiration » ;
-   - réplique aléatoire quand on clique dessus.
+2. **Into 3D**: the image was turned into a textured (PBR) 3D model with **[Form From Light](https://formfromlight.com/)** and exported as GLB.
+   → [`elizabeth.glb`](elizabeth.glb) (≈ 6.8 MB, single mesh, no skeleton)
+3. **Integration**: the model is loaded in Three.js, scaled and placed on the ground automatically, with its orientation corrected.
+4. **Procedural animation**: since the model has no skeleton, it is animated in code:
+   - turning towards the cursor;
+   - hops with squash & stretch on landing;
+   - a spin when a page opens;
+   - gentle "breathing";
+   - a random line of dialogue when clicked.
 
-> Pour remplacer le personnage : déposer un autre fichier nommé `elizabeth.glb` à côté de `index.html`. Si l'orientation est mauvaise, ajuster `LIZ_YAW` dans le script. Sans fichier, le site fonctionne simplement sans personnage.
+> To swap the character: drop another file named `elizabeth.glb` next to `index.html`. If it faces the wrong way, adjust `LIZ_YAW` in the script. Without the file, the site simply runs without a character.
 
 ---
 
-## Outils et technologies
+## Tools and technologies
 
-| Domaine | Outil |
+| Area | Tool |
 |---|---|
-| Rendu 3D | [Three.js](https://threejs.org/) r160 (WebGL), chargé par CDN, sans build |
-| Post-traitement | Rayons de soleil (shader maison), UnrealBloom, étalonnage chaud (shader maison) |
-| Décor | Généré en code : façades, enseignes et textures dessinées en Canvas 2D |
-| Son | Web Audio API (ambiance et effets synthétisés, aucun fichier audio) |
-| Concept du personnage | Gemini |
-| Modèle 3D du personnage | [Form From Light](https://formfromlight.com/) |
-| Développement | Code écrit avec l'aide de Claude (Anthropic) |
+| 3D rendering | [Three.js](https://threejs.org/) r160 (WebGL), loaded from a CDN, no build step |
+| Post-processing | Sun rays (custom shader), UnrealBloom, warm colour grading (custom shader) |
+| Environment | Generated in code: façades, signs and textures drawn with Canvas 2D |
+| Sound | Web Audio API (synthesised ambience and effects, no audio files) |
+| Character concept | Gemini |
+| Character 3D model | [Form From Light](https://formfromlight.com/) |
+| Development | Code written with the help of Claude (Anthropic) |
 
 ---
 
 ## Structure
 
 ```
-index.html                  le site complet (HTML + CSS + JS)
-elizabeth.glb               modèle 3D d'Elizabeth
-README.md                   ce fichier
-assets/projects/            aperçus des projets (captures d'écran)
+index.html                  the whole site (HTML + CSS + JS)
+elizabeth.glb               Elizabeth's 3D model
+cv.pdf                      CV (Download CV button)
+README.md                   this file
+assets/photo.jpg            portrait for the About me page
+assets/projects/            project previews (screenshots)
 docs/
-  references/               captures du jeu servant de référence
-  elizabeth/                concept 2D du personnage
+  references/               game screenshots used as reference
+  elizabeth/                2D concept of the character
 ```
 
 ---
 
-## Personnaliser le contenu
+## Editing the content
 
-Tout le contenu se trouve dans l'objet `PROFILE`, en haut du script de `index.html` :
+All the content lives in the `PROFILE` object at the top of the script in `index.html`:
 
-- `first`, `last`, `title` : nom et titre
-- `about`, `tagline`, `photo` : page « À propos »
-- `projects` : nom, technos, description, lien de chaque projet
-- `skills` : compétences et niveau (0 à 1)
-- `contact` : e-mail, LinkedIn, GitHub…
-- `cv` : chemin du CV (déposer `cv.pdf` à côté de `index.html`)
+- `first`, `last`, `title`: name and title
+- `about`, `tagline`, `photo`: About me page
+- `projects`: name, tags, description, link and preview image for each project
+- `skills`: skills and level (0 to 1)
+- `contact`: e-mail, LinkedIn, GitHub…
+- `cv`: path to the CV (put `cv.pdf` next to `index.html`)
 
 ---
 
-## Lancer en local
+## Running locally
 
-Le site doit être servi par un petit serveur, car le modèle `.glb` ne se charge pas en ouvrant le fichier directement :
+The site needs a small local server, because the `.glb` model won't load when opening the file directly:
 
 ```bash
 python -m http.server 5173
 ```
 
-Puis ouvrir http://localhost:5173
+Then open http://localhost:5173
 
-## Mise en ligne
+## Deployment
 
-Il n'y a pas d'étape de build : le dossier peut être publié tel quel sur GitHub Pages, Netlify ou Vercel.
+There is no build step: the folder is deployed as-is on Vercel (it would also work on GitHub Pages or Netlify). Every push to `main` redeploys the site.
 
 ---
 
-## Accessibilité et performances
+## Accessibility and performance
 
-- Une version texte du contenu, cachée à l'écran, est fournie pour les lecteurs d'écran.
-- Les animations sont réduites si le système demande `prefers-reduced-motion`.
-- Si l'animation rame (GPU intégré, PC portable), la résolution de rendu baisse automatiquement.
+- A hidden text version of the content is provided for screen readers.
+- Animations are reduced when the system requests `prefers-reduced-motion`.
+- If rendering struggles (integrated GPU, laptop), the render resolution drops automatically.
