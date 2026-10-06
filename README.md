@@ -33,7 +33,17 @@ Hovering a project shows a vintage-photo preview next to the sign (screenshots i
 | I | **SUNGA** | Website for SUNGA, a digital & IT partner: custom web apps, mobile apps and business tools | [sunga.be](https://sunga.be/fr) |
 | II | **Kulabox** | Booking platform for African culinary experiences (search by craving, city and date; host pages) | [staging.kulabox.eu](https://staging.kulabox.eu/fr/experiences) |
 | III | **KRAFT** | Team project: creative workshops (linocut printing…) in coffee bars; concept, problem, audience and website | [kraft-neon.vercel.app](https://kraft-neon.vercel.app/) |
-| IV | **Wutai · FF VII** | The village of Wutai (Final Fantasy VII) rebuilt in **Blender**, then explorable in a **React Three Fiber** app: clickable buildings, camera moves with **GSAP**, **Rapier** physics, and Yuffie's hidden Materia as an easter egg | **3D viewer inside the portfolio** |
+| IV | **Control the Universe** | Interactive spatial audio installation made to be presented to **[aifoon vzw](https://aifoon.org/)** (Ghent): visitors use their smartphone as a cosmic compass to steer 6 planetary sounds orbiting around them on **16 speakers**. Built in **Max/MSP** with **IRCAM Spat5** and **ZigSim** | **video + photo gallery inside the portfolio** |
+| V | **Wutai · FF VII** | The village of Wutai (Final Fantasy VII) rebuilt in **Blender**, then explorable in a **React Three Fiber** app: clickable buildings, camera moves with **GSAP**, **Rapier** physics, and Yuffie's hidden Materia as an easter egg | **3D viewer inside the portfolio** |
+
+### Control the Universe in detail
+- **Context**: made to be presented to [aifoon vzw](https://aifoon.org/), a Ghent arts organisation that broadens and questions listening through workshops, installations and performances.
+- **Concept**: an interactive spatial audio experience for people fascinated by space. The visitor's smartphone becomes a cosmic compass: turning it changes the rotation speed of six celestial bodies (Sun, Moon, Earth, Mars, Saturn, Pluto) whose sounds orbit around the audience.
+- **Audio engine**: Max/MSP with IRCAM **Spat5** (`spat5.spat~`, 6 sources → 16 outputs, 2D VBAP panning) and `spat5.oper` to visualise the sources moving around the speaker ring; a metro drives the orbits.
+- **Interaction**: phone compass data streamed with **ZigSim** over UDP, mapped to the planets' speed, with an on-screen scale showing how much the visitor influences it.
+- **Onboarding**: a spoken tutorial (voice generated with ElevenLabs) plays from a playlist inside the patch.
+- **Setup**: tested in a room with 16 speakers placed in a circle around the audience (photos in [`assets/ctu/`](assets/ctu/)).
+- **For the web**: the 4:22 walkthrough video was re-encoded with ffmpeg (1080p → 720p H.264), going from **290 MB to 6.3 MB**.
 
 ### Wutai in detail
 - **Modelling**: village, pagoda, houses, river and statue modelled in Blender (`Wutai.blend`, `Wutai houses.blend`), exported to GLB (≈ 95 MB).
@@ -105,6 +115,7 @@ The idea: use AI as a production tool, in service of an art direction defined up
 | Post-processing | Sun rays (custom shader), UnrealBloom, warm colour grading (custom shader) |
 | Environment | Generated in code: façades, signs and textures drawn with Canvas 2D |
 | Sound | Web Audio API (synthesised ambience and effects, no audio files) |
+| Video optimisation | ffmpeg |
 | Character concept | Gemini |
 | Character 3D model | [Form From Light](https://formfromlight.com/) |
 | Development | Code written with the help of Claude (Anthropic) |
@@ -121,6 +132,7 @@ README.md                   this file
 assets/photo.jpg            portrait for the About me page
 assets/projects/            project previews (screenshots)
 assets/wutai.glb            optimised Wutai model for the 3D viewer
+assets/ctu/                 Control the Universe video, poster and photos
 docs/
   references/               game screenshots used as reference
   elizabeth/                2D concept of the character
@@ -134,7 +146,7 @@ All the content lives in the `PROFILE` object at the top of the script in `index
 
 - `first`, `last`, `title`: name and title
 - `about`, `tagline`, `photo`: About me page
-- `projects`: name, tags, description, link and preview image for each project (add `model: 'path.glb'` to open a 3D viewer instead of a link)
+- `projects`: name, tags, description, link and preview image for each project (add `model: 'path.glb'` to open a 3D viewer, or `gallery: [...]` for a video/photo gallery, instead of a link)
 - `skills`: skills and level (0 to 1)
 - `contact`: e-mail, LinkedIn, GitHub…
 - `cv`: path to the CV (put `cv.pdf` next to `index.html`)
